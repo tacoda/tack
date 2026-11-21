@@ -34,11 +34,30 @@ characterize  ->  constrain  ->  migrate
 All quality context lives as **plain-text Markdown committed in the repo** —
 `AGENTS.md`, `GLOSSARY.md`, `docs/adr/`, `docs/agent-ready/` (report +
 catalog). Nothing lives in an external system, a wiki, or someone's head.
-That is what lets migrations run *alongside* product work instead of
-blocking it: a migration slice is an ordinary commit — versioned, diffable,
-reviewable like any other — and it cannot silently break anything, because
-characterization tests + lint + CI + drift checks must stay green on every
-single commit.
+These text files are the **source of truth** — for business decisions and
+domain information as much as for code reality — and they are continually
+updated (same-commit rule) so they keep representing the truth. **Drift**
+(`tack-drift`) is the measure of where they stop. That is what lets
+migrations run *alongside* product work instead of blocking it: a migration
+slice is an ordinary commit — versioned, diffable, reviewable like any
+other — and it cannot silently break anything, because characterization
+tests + lint + CI + drift checks must stay green on every single commit.
+
+## Incremental by design
+
+tack is not a big-bang project. One person can run it alone, a team can apply
+it a little at a time, or it can be one focused effort — same workflow, same
+safety rules. Every phase stands alone and delivers value:
+
+- **characterize alone** → a truthful map of the repo + a safety net
+  (characterization tests) that makes any later agent change provable
+- **constrain alone** → agents can onboard safely; drift becomes visible in CI
+- **each migrate slice** → one more area consistent, shipped green on its own
+
+And value keeps improving with every *new* change, not just during the
+bootstrap: context is updated in the same commit as the change and drift
+checks run on every PR, so each product change leaves the repo slightly more
+agent-ready than before.
 
 ## The distribution
 
@@ -52,6 +71,7 @@ installs all of them):
 | `tack-constrain` | 2 | `AGENTS.md` quality context, pre-commit/CI, drift checks |
 | `tack-migrate` | 3 | consistency migration in small green commits |
 | `tack-drift` | anytime | audit and repair code<->context drift, both directions |
+| `tack-adr` | anytime | record decisions as committed text — ADRs agents must not re-litigate |
 
 ## Phase 0 — Triage
 

@@ -13,6 +13,10 @@ map, conventions, glossary, and the rules for changing any of them.
 - **Conventions** — the target standards (from the consistency catalog),
   with pointers to example files that embody them.
 - **Glossary** — domain terms mapped to code identifiers.
+- **Business truth** — product and domain decisions, requirements, and
+  domain knowledge as text files (ADRs, product briefs, JTBD/domain docs),
+  continually updated so they still represent the truth. Agents act on this
+  text; the drift checks defend it.
 - **Quality bar** — definition of done for a change: which checks must be
   green, review expectations, commit hygiene.
 - **How to update this context** — the meta-rules below, written into

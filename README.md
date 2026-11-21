@@ -26,10 +26,23 @@ characterize  ->  constrain  ->  migrate
    or change the standard via ADR.
 
 All of it is **plain text committed in the repo** (`AGENTS.md`, `GLOSSARY.md`,
-`docs/adr/`, `docs/agent-ready/`) — so migrations are ordinary, diffable,
-reviewable commits that run alongside product work (no freeze windows, no
-big-bang), and every commit must stay green against the constraint suite, so
-nothing breaks silently.
+`docs/adr/`, `docs/agent-ready/`) — business decisions and domain information
+included — continually updated (same-commit rule) so the text keeps
+representing the truth. That is why migrations run alongside product work as
+ordinary, diffable, reviewable commits (no freeze windows, no big-bang), and
+why every commit must stay green against the constraint suite: nothing breaks
+silently. Drift — text diverging from reality — is detected by CI and repaired
+deliberately (`tack-drift`).
+
+## Incremental by design
+
+One person, a team a little at a time, or one focused effort — same workflow,
+same safety rules. Every phase and every migration slice delivers value on its
+own: characterize alone gives a truthful map + a safety net, constrain alone
+makes agent onboarding safe and drift visible, and each green migration slice
+makes one more area consistent. Because context is updated in the same commit
+as every change and drift checks run on every PR, value keeps compounding with
+each new product change — no freeze windows, no big-bang.
 
 ## Install (skills.sh)
 
@@ -52,6 +65,7 @@ npx skills add tacoda/tack -g                  # install globally
 | `tack-constrain` | 2 | setting up `AGENTS.md`, coding standards, pre-commit/CI, drift checks |
 | `tack-migrate` | 3 | migrating code toward the conventions catalog in small green commits |
 | `tack-drift` | anytime | "are the docs still accurate?" — audit/repair code<->context drift, both directions |
+| `tack-adr` | anytime | recording decisions as committed text (ADRs) so agents never re-litigate them |
 
 ## Repo layout
 
@@ -61,7 +75,8 @@ skills/
 ├── tack-characterize/     phase 1 + references + report template
 ├── tack-constrain/        phase 2 + quality-context guide + AGENTS.md & check-context.sh templates
 ├── tack-migrate/          phase 3 + catalog template
-└── tack-drift/            drift taxonomy, detection, repair playbook
+├── tack-drift/            drift taxonomy, detection, repair playbook
+└── tack-adr/              ADR template + practice guide (decisions as text)
 ```
 
 Each skill is a standard agentskills.io folder (`SKILL.md` with `name` +

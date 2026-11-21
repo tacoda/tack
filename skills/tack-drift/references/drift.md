@@ -1,7 +1,10 @@
 # Drift: taxonomy, detection, repair
 
-Drift is any disagreement between two layers that are supposed to agree.
-Agent-ready projects detect drift automatically and repair it deliberately.
+The text files in a repo are supposed to represent the **truth** — about the
+business (decisions, domain, requirements) and about the code (commands,
+conventions, architecture). Drift is any disagreement that means a text file
+no longer does. Agent-ready projects detect drift automatically and repair it
+deliberately, so the text keeps representing the truth.
 
 ## The two directions of drift
 
@@ -46,8 +49,9 @@ For every drift finding, choose exactly one:
 2. **Fix the context** — the context is stale. Update the SSOT file in the
    same commit as the code change that caused it (or immediately, if the
    change already landed).
-3. **Change the standard** — both are wrong. Record an ADR superseding the
-   old decision, update the catalog target, then migrate.
+3. **Change the standard** — both are wrong. Record an ADR (the `tack-adr`
+   skill's `templates/adr.md`) superseding the old decision, update the
+   catalog target, then migrate.
 
 Rules:
 

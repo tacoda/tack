@@ -36,7 +36,7 @@ Put the checks from the Phase 1 baseline into pre-commit and CI:
   uses, configured via its standard config file (`.editorconfig`,
   `ruff.toml`, `.eslintrc`, `gofmt`, ...).
 - Add a tool only if the project has none **and** the stack has an obvious
-  standard choice. Record the choice as an ADR.
+  standard choice. Record the choice as an ADR (see the `tack-adr` skill).
 - Pre-commit should run the fast checks; CI runs everything including the
   slow suite. Use the project's existing CI if it has one; otherwise add a
   minimal workflow file for the stack's standard CI.

@@ -54,6 +54,11 @@ work on the same branch:
 - **Context rides along.** Because context is plain text in the repo, the
   same-commit update rule means a migration commit leaves docs and code in
   agreement — the next agent (or human) never inherits drift.
+- **Value per slice.** Every green slice is shippable on its own; the catalog
+  never has to be "finished" for the repo to be better. Value compounds slice
+  by slice, and keeps compounding after the bootstrap because every new
+  product change also updates context (same-commit rule) and passes the drift
+  checks.
 
 ## Ordering heuristic
 
@@ -69,7 +74,8 @@ work on the same branch:
 Sometimes consistency requires behavior change (e.g. renaming a public API).
 That is a feature/refactor of its own, not a migration slice: plan it,
 communicate it, migrate callers in their own green commits, and record an
-ADR. Never bundle it into a consistency commit.
+ADR (the `tack-adr` skill's `templates/adr.md`). Never bundle it into a
+consistency commit.
 
 ## Refresh
 
