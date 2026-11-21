@@ -29,10 +29,21 @@ characterize  ->  constrain  ->  migrate
   (pin it)       (contract)      (move it, safely)
 ```
 
+## Storage principle: plain text in the repo
+
+All quality context lives as **plain-text Markdown committed in the repo** —
+`AGENTS.md`, `GLOSSARY.md`, `docs/adr/`, `docs/agent-ready/` (report +
+catalog). Nothing lives in an external system, a wiki, or someone's head.
+That is what lets migrations run *alongside* product work instead of
+blocking it: a migration slice is an ordinary commit — versioned, diffable,
+reviewable like any other — and it cannot silently break anything, because
+characterization tests + lint + CI + drift checks must stay green on every
+single commit.
+
 ## The distribution
 
 This skill is the orchestrator. The full procedures and templates live in the
-companion skills of this same distribution (`npx skills add tacoda/botstrap`
+companion skills of this same distribution (`npx skills add tacoda/tack`
 installs all of them):
 
 | Skill | Phase | Use it for |

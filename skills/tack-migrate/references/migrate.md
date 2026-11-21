@@ -36,6 +36,25 @@ Per slice:
 - **Small enough to review, big enough to matter.** If a slice can't be
   reviewed in one sitting, split it.
 
+## Running alongside product work (no interruption, no breakage)
+
+Migration slices are deliberately shaped so they can interleave with feature
+work on the same branch:
+
+- **Small, independent commits.** One slice = one bounded area = one commit.
+  Small surface means few merge collisions with in-flight product work; when
+  a collision happens, it is a trivial rebase, not a project.
+- **Green per commit, not per batch.** The constraint suite (characterization
+  tests + lint + type + CI + drift checks) must pass on every commit. That
+  is the guarantee that a migration commit broke nothing: if it had, the
+  suite would be red and the commit would not merge.
+- **No freeze, no big bang.** There is no migration window and no cutover.
+  Product work continues; slices land as they become green. Rollback of any
+  slice is `git revert` of one commit.
+- **Context rides along.** Because context is plain text in the repo, the
+  same-commit update rule means a migration commit leaves docs and code in
+  agreement — the next agent (or human) never inherits drift.
+
 ## Ordering heuristic
 
 1. Public API surface and module boundaries (biggest agent impact: agents

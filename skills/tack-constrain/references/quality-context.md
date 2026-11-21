@@ -49,6 +49,29 @@ map, conventions, glossary, and the rules for changing any of them.
    context window. Point, don't paste. If a linked doc grows huge, split it
    and link the index.
 
+## Where context lives: plain text, in the repo
+
+All quality context is stored as plain-text Markdown committed in the
+repository, versioned with the code:
+
+- `AGENTS.md` — root index (cross-agent standard)
+- `GLOSSARY.md` — terms mapped to code identifiers
+- `docs/adr/` — one file per architectural decision
+- `docs/agent-ready/` — characterization report + consistency catalog
+
+Why text-in-repo rather than a wiki or external tool:
+
+- **Migrations never interrupt product work.** A migration slice is an
+  ordinary commit on the same branch flow as feature work — diffable,
+  reviewable, revertable. No freeze windows, no big-bang cutover, no
+  separate process to run.
+- **Nothing breaks silently.** Every commit (product or migration) must
+  stay green against the constraint suite — characterization tests, lint,
+  type check, CI, drift checks — so a breaking change fails loudly in the
+  PR, not in production.
+- **Diffs are the review.** Context changes are reviewed in the same PR as
+  the code change that caused them, which is what keeps drift A rare.
+
 ## Placement
 
 Root `AGENTS.md` is the cross-agent standard (read by Claude Code, Codex,

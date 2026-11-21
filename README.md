@@ -25,6 +25,12 @@ characterize  ->  constrain  ->  migrate
    the same commit. Drift in either direction is triaged: fix code, fix docs,
    or change the standard via ADR.
 
+All of it is **plain text committed in the repo** (`AGENTS.md`, `GLOSSARY.md`,
+`docs/adr/`, `docs/agent-ready/`) — so migrations are ordinary, diffable,
+reviewable commits that run alongside product work (no freeze windows, no
+big-bang), and every commit must stay green against the constraint suite, so
+nothing breaks silently.
+
 ## Install (skills.sh)
 
 Any public GitHub repo with `SKILL.md` files is installable via the skills CLI
