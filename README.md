@@ -70,6 +70,16 @@ npx skills add tacoda/tack --skill tack-drift  # one phase skill
 npx skills add tacoda/tack -g                  # install globally
 ```
 
+- Repo: https://github.com/tacoda/tack
+- skills.sh directory page: https://skills.sh/tacoda/tack
+
+Verified end-to-end with the skills CLI (node 24): `npx skills add
+tacoda/tack -l` discovers all seven skills from the public repo, and
+`npx skills add tacoda/tack -s '*' -a claude-code -y` installs them into
+`.claude/skills/` with all `references/`, `templates/`, `recipes/`, and
+`scripts/` support files; `npx skills ls` lists them with `Source:
+tacoda/tack`.
+
 ## Skills in this distribution
 
 | Skill | Phase | Load it when |
