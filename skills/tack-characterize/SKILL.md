@@ -35,6 +35,9 @@ behavior is pinned by tests and the baseline is recorded.
    (suggested path `docs/agent-ready/characterization-report.md`).
 
 Full details and measurement techniques: `references/characterize.md`.
+Per-stack recipes for writing characterization tests (snapshots, seams,
+fakes, gotchas): `recipes/` (`python`, `javascript-typescript`, `go`, `ruby`,
+`jvm`, `rust`).
 
 ## Exit criteria
 

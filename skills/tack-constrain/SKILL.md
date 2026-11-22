@@ -14,6 +14,11 @@ project's bar. It must be accurate *and* easy to keep accurate.
 
 ## Procedure
 
+0. **Scaffold (optional but recommended)**: run this skill's
+   `scripts/scaffold.sh [target-dir]` to drop all template files into the
+   repo at once — `AGENTS.md`, `GLOSSARY.md`, `scripts/check-context.sh`,
+   `.github/workflows/agent-ready.yml`, `.pre-commit-config.yaml`,
+   `docs/adr/` — without overwriting anything that exists.
 1. **Write root `AGENTS.md`** from `templates/AGENTS.md`: overview, verified
    commands (only ones you actually ran, with real output), architecture map
    as pointers, conventions pointer, glossary pointer, quality bar, and a

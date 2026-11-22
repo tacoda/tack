@@ -44,6 +44,20 @@ makes one more area consistent. Because context is updated in the same commit
 as every change and drift checks run on every PR, value keeps compounding with
 each new product change — no freeze windows, no big-bang.
 
+## Quick start in a target repo
+
+Install the skills, then let `tack-constrain`'s scaffold script drop the
+skeleton into the project (never overwrites existing files):
+
+```sh
+npx skills add tacoda/tack            # install the distribution
+# in the target repo, run the skill's scaffold script:
+skills/tack-constrain/scripts/scaffold.sh .   # path depends on install location
+```
+
+Then fill in the TODO markers, commit the skeleton, and run
+`tack-characterize` → `tack-migrate`.
+
 ## Install (skills.sh)
 
 Any public GitHub repo with `SKILL.md` files is installable via the skills CLI
@@ -73,7 +87,7 @@ npx skills add tacoda/tack -g                  # install globally
 ```
 skills/
 ├── tack/                  orchestrator: pillars, workflow, definition of done
-├── tack-characterize/     phase 1 + references + report template
+├── tack-characterize/     phase 1 + references + per-language recipes + report template
 ├── tack-constrain/        phase 2 + quality-context guide + AGENTS.md & check-context.sh templates
 ├── tack-migrate/          phase 3 + catalog template + migration patterns
 ├── tack-drift/            drift taxonomy, detection, repair playbook
@@ -83,7 +97,9 @@ skills/
 
 `tack-constrain` also ships copy-paste starters: `templates/AGENTS.md`,
 `templates/GLOSSARY.md`, `templates/check-context.sh`,
-`templates/pre-commit-config.yaml`, and `templates/ci-agent-ready.yml`.
+`templates/pre-commit-config.yaml`, and `templates/ci-agent-ready.yml`, plus
+`scripts/scaffold.sh` which installs all of them into a target repo in one
+command (idempotent, never overwrites).
 
 Each skill is a standard agentskills.io folder (`SKILL.md` with `name` +
 `description` frontmatter) plus `references/` and `templates/` support files.

@@ -40,6 +40,11 @@ Rules:
 
 ## 3. Characterization tests (the safety net)
 
+Per-language recipes (snapshot/approval tooling, seams, fakes, gotchas) live
+in `../recipes/` — pick the one for the repo's stack:
+`python.md`, `javascript-typescript.md`, `go.md`, `ruby.md`, `jvm.md`,
+`rust.md`.
+
 Legacy code often lacks tests. Before migrating anything, pin current
 behavior:
 
