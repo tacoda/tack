@@ -18,14 +18,16 @@ project's bar. It must be accurate *and* easy to keep accurate.
    commands (only ones you actually ran, with real output), architecture map
    as pointers, conventions pointer, glossary pointer, quality bar, and a
    "How to update this file" section.
-2. **Create the SSOT files it points to**: `GLOSSARY.md` (each term mapped to
-   a code identifier), `docs/adr/` (one file per decision, with status), and
+2. **Create the SSOT files it points to**: `GLOSSARY.md` (template:
+   `templates/GLOSSARY.md` — each term mapped to a code identifier),
+   `docs/adr/` (one file per decision, with status — see `tack-adr`), and
    the consistency catalog (see `tack-migrate`). One home per fact; link,
    don't copy.
 3. **Wire enforcement** into pre-commit and CI: format, lint, type check,
    tests — the tooling the project already uses, in its standard config.
-   Add a tool only if the stack has an obvious standard choice; record the
-   choice as an ADR.
+   Copy-paste starters: `templates/pre-commit-config.yaml` and
+   `templates/ci-agent-ready.yml`. Add a tool only if the stack has an
+   obvious standard choice; record the choice as an ADR.
 4. **Add drift checks**: install `templates/check-context.sh` as
    `scripts/check-context.sh` and run it in CI. Minimum set: referenced paths
    exist, AGENTS.md command blocks run, doc examples compile, glossary terms

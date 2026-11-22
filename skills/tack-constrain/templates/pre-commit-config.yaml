@@ -1,0 +1,24 @@
+# pre-commit-config.yaml — fast checks locally, full suite in CI.
+# Install: pipx install pre-commit && pre-commit install
+repos:
+  - repo: local
+    hooks:
+      # Drift checks: every referenced path exists, glossary terms match code.
+      - id: check-context
+        name: drift checks (docs <-> code)
+        entry: ./scripts/check-context.sh
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      # TODO: format/lint per stack, e.g.
+      # - id: ruff
+      #   name: ruff
+      #   entry: ruff check --fix
+      #   language: system
+      #   types: [python]
+      # - id: ruff-format
+      #   name: ruff format
+      #   entry: ruff format
+      #   language: system
+      #   types: [python]

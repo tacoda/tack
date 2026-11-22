@@ -1,0 +1,30 @@
+# ci-agent-ready.yml — install as .github/workflows/agent-ready.yml
+# Runs the constraint suite on every PR: format/lint/type/test + drift checks.
+# Fill in the TODO steps for the project's stack. Every step must be green
+# relative to the Phase 1 baseline (known failures explicitly allowlisted).
+name: agent-ready
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  constraints:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # TODO: install dependencies for the stack, e.g.
+      # - uses: actions/setup-node@v4
+      #   with: { node-version: '22' }
+      # - run: npm ci
+
+      # TODO: the Phase 1 baseline commands, e.g.
+      # - run: npm run lint
+      # - run: npm run typecheck
+      # - run: npm test
+
+      # Drift checks: docs <-> code must agree (path/command/term checks).
+      - name: drift checks
+        run: ./scripts/check-context.sh

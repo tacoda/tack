@@ -66,6 +66,7 @@ npx skills add tacoda/tack -g                  # install globally
 | `tack-migrate` | 3 | migrating code toward the conventions catalog in small green commits |
 | `tack-drift` | anytime | "are the docs still accurate?" — audit/repair code<->context drift, both directions |
 | `tack-adr` | anytime | recording decisions as committed text (ADRs) so agents never re-litigate them |
+| `tack-eval` | anytime | proving the context works — canary-task evals whose failures fix the docs in the same PR |
 
 ## Repo layout
 
@@ -74,10 +75,15 @@ skills/
 ├── tack/                  orchestrator: pillars, workflow, definition of done
 ├── tack-characterize/     phase 1 + references + report template
 ├── tack-constrain/        phase 2 + quality-context guide + AGENTS.md & check-context.sh templates
-├── tack-migrate/          phase 3 + catalog template
+├── tack-migrate/          phase 3 + catalog template + migration patterns
 ├── tack-drift/            drift taxonomy, detection, repair playbook
-└── tack-adr/              ADR template + practice guide (decisions as text)
+├── tack-adr/              ADR template + practice guide (decisions as text)
+└── tack-eval/             canary-task evals that prove the context works
 ```
+
+`tack-constrain` also ships copy-paste starters: `templates/AGENTS.md`,
+`templates/GLOSSARY.md`, `templates/check-context.sh`,
+`templates/pre-commit-config.yaml`, and `templates/ci-agent-ready.yml`.
 
 Each skill is a standard agentskills.io folder (`SKILL.md` with `name` +
 `description` frontmatter) plus `references/` and `templates/` support files.

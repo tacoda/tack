@@ -72,6 +72,7 @@ installs all of them):
 | `tack-migrate` | 3 | consistency migration in small green commits |
 | `tack-drift` | anytime | audit and repair code<->context drift, both directions |
 | `tack-adr` | anytime | record decisions as committed text — ADRs agents must not re-litigate |
+| `tack-eval` | anytime | prove the context works — canary-task evals, failures fed back into the text |
 
 ## Phase 0 — Triage
 

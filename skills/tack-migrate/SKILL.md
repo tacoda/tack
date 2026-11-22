@@ -36,7 +36,10 @@ Per slice:
 Never bundle a behavior change into a consistency commit — that gets its own
 planned change with an ADR and caller migration.
 
-Details: `references/migrate.md`.
+Details: `references/migrate.md`; behavior-changing moves use the patterns in
+`references/migration-patterns.md` (branch by abstraction, strangler fig,
+parallel run, expand–migrate–contract, feature flags) — each step green,
+each step revertable, ADR first.
 
 ## Exit criteria
 
